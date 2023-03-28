@@ -271,13 +271,14 @@ In Python, you can send the HTTP post easily with [requests](https://pypi.org/pr
 # Requires pip install requests && pip freeze > requirements.txt
 import requests
 import os
+import json
 ...
 payload = {
     "email": "a-valid@emailaddress.com",
     "due": "4/1/2020",
     "task": "My new task!"
 }
-response = requests.post(os.environ['LOGIC_APP_URL'], data = payload)
+response = requests.post(os.environ['LOGIC_APP_URL'], data = json.dumps(payload),headers={'Content-Type':'application/json'})
 print(response.status_code)
 ```
 <!-- ```python
